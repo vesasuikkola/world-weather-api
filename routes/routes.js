@@ -4,7 +4,8 @@ import * as controllers from '../controllers/controllers.js';
 
 const router = express.Router();
 
-router.get('/', controllers.root);
+router.get('/:city', controllers.getWeatherForCity);
+router.get('/', controllers.usage);
 //router.get('/', isAuthorized, controllers.root);
 
 export default router;

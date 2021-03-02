@@ -14,3 +14,7 @@ export const URIS = {
   OWM_API:
     process.env.OWM_API || 'http://api.openweathermap.org/data/2.5/weather'
 };
+
+export const CACHE = {
+  EXPIRES: 600000
+};

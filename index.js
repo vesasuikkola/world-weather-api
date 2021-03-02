@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import { URIS } from './config.js';
-//import { connectMongoDb } from './services/dbService.js';
+import { connectMongoDb } from './services/dbService.js';
 import routes from './routes/routes.js';
 
 dotenv.config();

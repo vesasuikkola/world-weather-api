@@ -1,0 +1,70 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('world_weather');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against the correct database and collection.
+db.cache.drop();
+
+// Insert a few documents into the sales collection.
+db.cache.insertOne(
+  {
+    "coord": {
+      "lon": 24.6667,
+      "lat": 60.25
+    },
+    "weather": [
+      {
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 276.17,
+      "feels_like": 269.24,
+      "temp_min": 274.82,
+      "temp_max": 277.59,
+      "pressure": 1017,
+      "humidity": 70,
+      "sea_level": 0,
+      "grnd_level": 0
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 6.69,
+      "deg": 300,
+      "gust": 0
+    },
+    "clouds": {
+      "all": 20
+    },
+    "rain": {
+      "1h": 0,
+      "3h": 0
+    },
+    "snow": {
+      "1h": 0,
+      "3h": 0
+    },
+    "dt": 1614671910,
+    "sys": {
+      "type": 1,
+      "id": 1332,
+      "message": 0,
+      "country": "FI",
+      "sunrise": 1614662249,
+      "sunset": 1614700188
+    },
+    "timezone": 7200,
+    "id": 660129,
+    "name": "Espoo",
+    "cod": 200
+  }
+);
