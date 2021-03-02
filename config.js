@@ -16,5 +16,7 @@ export const URIS = {
 };
 
 export const CACHE = {
-  EXPIRES: 600000
+  EXPIRES: 600000 // i.e. 10 min
 };
+
+export const DEBUG = true;

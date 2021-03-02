@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 import Cache from '../models/model.js';
-import { CACHE } from '../config.js';
-import dotenv from 'dotenv';
-dotenv.config();
+import { CACHE, URIS } from '../config.js';
 
-export const connectMongoDb = mongoose.connect(process.env.MONGODB_URI, {
+export const connectMongoDb = mongoose.connect(URIS.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -22,3 +20,5 @@ export const updateCache = (data) => {
   data.expires = Date.now() + CACHE.EXPIRES; //add expiry timestamp
   return Cache.updateOne({ name: data.name }, data, { upsert: true });
 };
+
+export default connectMongoDb;
