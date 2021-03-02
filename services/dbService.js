@@ -12,8 +12,10 @@ export const connectMongoDb = mongoose.connect(process.env.MONGODB_URI, {
 export const readCache = (city) => {
   let query = { name: city };
   const projection = { _id: 0, __v: 0, weather: { _id: 0 } };
-  const options = { limit: 1 }; //TODO: parametrize these for the client to control?
-  return Cache.find(query, projection, options);
+  return Cache.findOne(query, projection).collation({
+    locale: 'en',
+    strength: 2
+  });
 };
 
 export const updateCache = (data) => {

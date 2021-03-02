@@ -1,6 +1,5 @@
-import axios from 'axios';
-import * as config from '../config.js';
 import { readCache, updateCache } from '../services/dbService.js';
+import * as owmService from '../services/owmService.js';
 
 export const usage = async (req, res) => {
   try {
@@ -12,17 +11,17 @@ export const usage = async (req, res) => {
 
 export const getWeatherForCity = async (req, res) => {
   try {
-    const dataInCache = (await readCache(req.params.city))[0];
+    const city = req.params.city;
 
+    // Try to get the data from the mongodb cache
+    const dataInCache = await readCache(city);
     if (dataInCache && dataInCache.expires > Date.now())
       return res.send(dataInCache);
 
-    const { data } = await axios.get(
-      `${config.URIS.OWM_API}?q=${req.params.city}&appid=${config.SECRETS.OWM_API_KEY}`
-    );
-    const update = await updateCache(data);
-
-    res.send(data);
+    // Otherwise get the data from OWM and update the cache
+    const owmData = await owmService.fetchOwmData(city);
+    await updateCache(owmData);
+    return res.send(owmData);
   } catch (error) {
     res.status(500).send(error);
   }
