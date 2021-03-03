@@ -19,4 +19,4 @@ export const CACHE = {
   EXPIRES: 600000 // i.e. 10 min
 };
 
-export const DEBUG = true;
+export const DEBUG = process.env.DEBUG || false;
